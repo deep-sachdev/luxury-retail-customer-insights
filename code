@@ -1,0 +1,60 @@
+Cleaned R script (sentiment + topic modelling only, no GA code)
+
+senti <- sentiment_by(Harrods_Trustpilot$Review)
+Harrods_Trustpilot$sentiment_score <- senti$ave_sentiment
+
+Harrods_Trustpilot$date <- as.Date(Harrods_Trustpilot$Date)
+
+
+Harrods_Trustpilot$date_rank <- rank(Harrods_Trustpilot$date, ties.method = "min") 
+
+ggplot(Harrods_Trustpilot, aes(x = sentiment_score)) +
+  geom_histogram(binwidth = 0.1, fill = "skyblue", color = "black") +
+  labs(title = "Distribution of Sentiment Scores",
+       x = "Sentiment Score",
+       y = "Count of Reviews") +
+  theme_minimal()
+
+Harrods_Trustpilot$Sentiment_Category <- cut(Harrods_Trustpilot$sentiment_score, 
+                                             breaks = c(-Inf, -0.1, 0.1, Inf), 
+                                             labels = c("Negative", "Neutral", "Positive"))
+
+ggplot(Harrods_Trustpilot, aes(x = Sentiment_Category, fill = Sentiment_Category)) +
+  geom_bar() +
+  labs(title = "Sentiment Category Distribution",
+       x = "Sentiment Category",
+       y = "Number of Reviews") +
+  scale_fill_manual(values = c("Negative" = "red", "Neutral" = "gray", "Positive" = "green")) +
+  theme_minimal()
+
+
+processed <- textProcessor(Harrods_Trustpilot$Review, metadata=Harrods_Trustpilot)
+out <- prepDocuments(processed$documents, processed$vocab, processed$meta)
+
+
+tm_1 <- stm(out$documents, out$vocab, K=8, prevalence=~sentiment_score+s(date_rank),
+            max.em.its=40, data=out$meta, init.type="Spectral")
+plot(tm_1, type="summary")
+plot(tm_1, type="labels", topics=c(1,2,3,4,5,6,7,8), text.cex=0.5)
+
+findThoughts(tm_1, texts = as.character(out$meta$Review), n = 2, topics = 8)$docs[[1]]
+proportion <- as.data.frame(colSums(tm_1$theta/nrow(tm_1$theta)))
+print(proportion)
+
+prep <- estimateEffect(1:8 ~sentiment_score+s(date_rank), tm_1,
+                       meta = out$meta, uncertainty = "Global")
+
+plot(prep, covariate = "sentiment_score", topics = c(1,2,3,4,5,6, 7,8),
+     model = tm_1, method = "difference",
+     cov.value1 = "Postive", cov.value2 = "Negative",
+     xlab = "More Negative ... More Positive",
+     main = "Effect of content sentiment",
+     labeltype = "custom", 
+     custom.labels = c('Topic 1', 'Topic 2','Topic 3', 'Topic 4', 
+                       'Topic 5','Topic 6','Topic 7','Topic 8'))
+
+plot(prep, "date_rank", method = "continuous", topics = 4, 
+     printlegend = TRUE, xaxt = "n",   ylab = "Topic proportion over time", xlab = "time")
+
+plot(prep, "date_rank", method = "continuous", topics = c(2,3), 
+     printlegend = TRUE, xaxt = "n",   ylab = "Topic proportion over time", xlab = "time")
