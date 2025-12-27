@@ -18,7 +18,7 @@ The analysis combines **platform performance data** and **customer-generated tex
   - Instagram, Facebook, TikTok
   - Engagement, posting frequency, follower growth, applause vs conversation
 - **Customer reviews**
-  - 220 verified Trustpilot reviews (Harrods)
+  - Verified Trustpilot reviews (Harrods)
   - Sentiment scores, polarity categories, topic prevalence
 
 Competitor benchmark: **Selfridges**
