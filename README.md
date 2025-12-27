@@ -46,6 +46,7 @@ Visual references:*
 
 - Structural Topic Modelling (STM, K=8 topics)
 - Topic–sentiment and topic–time relationships
+
 *Visual references:*  
 - **Topic Summary & Labels** *(visuals/topic_model_summary.png)*  
 - **Sentiment vs Topic Effects** *(visuals/topic_vs_sentiment_effect_plot.png)*  
