@@ -34,7 +34,7 @@ Competitor benchmark: **Selfridges**
 - Competitor benchmarking (Harrods vs Selfridges)
 *Visual reference:*  
 **Harrods vs Selfridges – Engagement & Conversation Comparison**  
-*(visuals/harrods_vs_selfridges_engagement_per_post.png)*
+*(visuals/harrods_vs_selfridges_engagement_per_post.png)* 
 
 ### 2. Sentiment & Text Analytics
 - Context-aware sentiment scoring using R (`sentimentr`)
