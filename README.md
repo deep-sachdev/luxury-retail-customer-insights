@@ -34,24 +34,24 @@ Competitor benchmark: **Selfridges**
 - Competitor benchmarking (Harrods vs Selfridges)
 *Visual reference:*  
 **Harrods vs Selfridges – Engagement & Conversation Comparison**  
-*(visuals/harrods_vs_selfridges_engagement_per_post.png)* 
+![engagement per post](visuals/harrods_vs_selfridges_engagement_per_post.png) 
 
 ### 2. Sentiment Analysis
 - Context-aware sentiment scoring using R (`sentimentr`)
 - Sentiment categorisation (Positive / Neutral / Negative)
 
 Visual references:*  
-- **Sentiment Score Distribution** *(visuals/sentiment_score_distribution.png)*  
-- **Sentiment Category Breakdown** *(visuals/sentiment_category_split.png)
+- ![Sentiment Score Distribution](visuals/sentiment_score_distribution.png)  
+- ![Sentiment Category Breakdown](visuals/sentiment_category_split.png)
 
 ### 3. Topic Modelling
 - Structural Topic Modelling (STM, K=8 topics)
 - Topic–sentiment and topic–time relationships
 
 *Visual references:*  
-- **Topic Summary & Labels** *(visuals/topic_model_summary.png)*  
-- **Sentiment vs Topic Effects** *(visuals/topic_vs_sentiment_effect_plot.png)*  
-- **Topic Trends Over Time** *(visuals/topic_time_trend.png)*
+- ![Topic Summary & Labels](visuals/topic_model_summary.png)  
+- ![Sentiment vs Topic Effects](visuals/topic_vs_sentiment_effect_plot.png)
+- ![Topic Trends Over Time](visuals/topic_time_trend.png)
 ---
 
 ## Key Insights
