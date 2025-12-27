@@ -1,97 +1,116 @@
-# Luxury Retail Customer Insights: Social & Sentiment Analytics
-
-This project analyses social media engagement and customer sentiment data to generate actionable customer and brand insights for luxury retail.
-
-Using Harrods as the focus brand and Selfridges as a key competitor, the analysis translates social and review data into clear recommendations for customer engagement, brand positioning, and content strategy.
-
----
+# Luxury Retail Customer Insights: Social Media & Sentiment Analytics
 
 ## Business Problem
+Luxury retailers invest heavily in social media, but high follower counts do not always translate into meaningful engagement or positive brand perception.
 
-Luxury retailers invest heavily in social and digital channels but often struggle to understand:
-- Why engagement declines despite high brand awareness
-- How their performance compares to key competitors
-- Which customer experience factors most influence sentiment and perception
-
-The objective of this project was to diagnose engagement performance, identify sentiment drivers, and provide data-backed recommendations to improve customer engagement and brand impact.
+This project analyses **Harrods’ social media performance** against **Selfridges** to:
+- Diagnose engagement decline despite strong brand equity
+- Identify gaps between passive and active engagement
+- Extract customer sentiment and themes from verified reviews
+- Translate insights into actionable content and CX recommendations
 
 ---
 
-## Data & Features
+## Data & Scope
+The analysis combines **platform performance data** and **customer-generated text data**:
 
-The analysis combines multiple data sources:
+- **Social media KPIs** (30-day window: 15 Feb – 16 Mar 2025)
+  - Instagram, Facebook, TikTok
+  - Engagement, posting frequency, follower growth, applause vs conversation
+- **Customer reviews**
+  - 220 verified Trustpilot reviews (Harrods)
+  - Sentiment scores, polarity categories, topic prevalence
 
-- **Social media performance metrics**
-  - Engagement per post
-  - Applause, conversation, and amplification
-  - Posting frequency across platforms
-
-- **Customer review data**
-  - Trustpilot reviews (Harrods)
-  - Textual feedback for sentiment and trend analysis
-
-- **Comparative benchmarks**
-  - Cross-channel comparison with Selfridges
+Competitor benchmark: **Selfridges**
 
 ---
 
 ## Analytical Approach
 
-A structured customer analytics workflow was applied:
+### 1. Social Media Performance Analysis
+- Cross-channel KPI comparison
+- Engagement per post vs posting frequency
+- Applause (likes) vs conversation (comments) diagnostics
+- Competitor benchmarking (Harrods vs Selfridges)
+*Visual reference:*  
+**Harrods vs Selfridges – Engagement & Conversation Comparison**  
+*(visuals/harrods_vs_selfridges_engagement_per_post.png)*
 
-### 1. KPI & Competitive Analysis
-- Cross-channel engagement comparison (Harrods vs Selfridges)
-- Platform-level analysis of applause, conversation, and amplification
-- Posting frequency vs engagement diagnosis
+### 2. Sentiment & Text Analytics
+- Context-aware sentiment scoring using R (`sentimentr`)
+- Sentiment categorisation (Positive / Neutral / Negative)
 
-### 2. Trend & Performance Analysis
-- Identification of engagement decline patterns
-- Diagnosis of underperformance drivers beyond volume metrics
+Visual references:*  
+- **Sentiment Score Distribution** *(visuals/sentiment_score_distribution.png)*  
+- **Sentiment Category Breakdown** *(visuals/sentiment_category_split.png)
 
-### 3. Sentiment & Text Analytics
-- Review text cleaning and preprocessing
-- Sentiment scoring and polarity analysis
-- Trend extraction to surface recurring customer themes
-
+- Structural Topic Modelling (STM, K=8 topics)
+- Topic–sentiment and topic–time relationships
+*Visual references:*  
+- **Topic Summary & Labels** *(visuals/topic_model_summary.png)*  
+- **Sentiment vs Topic Effects** *(visuals/topic_vs_sentiment_effect_plot.png)*  
+- **Topic Trends Over Time** *(visuals/topic_time_trend.png)*
 ---
 
 ## Key Insights
 
-- Harrods significantly outperformed Selfridges in total audience size but underperformed on **engagement per post**, indicating inefficient content performance.
-- Engagement decline aligned with **reduced posting frequency**, suggesting visibility and consistency issues rather than brand fatigue.
-- Sentiment analysis revealed strong positive perception around brand prestige, but recurring negative themes around **service experience and value perception**.
-- Competitor benchmarking showed Selfridges achieving higher engagement efficiency despite a smaller audience base.
+### Engagement Performance
+- Harrods generated **~65,700 total engagements**, but this represented a **20.9% decline** versus the prior 30-day period.
+- Despite lower posting volume, Harrods achieved **~1,530 engagements per post**, significantly higher than Selfridges (**~96 engagements per post**).
+- Harrods dominated **passive engagement**:
+  - **~63,500 applause interactions (likes/favourites)**
+- Selfridges outperformed in **active engagement**:
+  - **+52.9% increase in comments**, while Harrods comments declined **21.7%**
 
-Supporting visuals:
-- Cross-channel engagement comparison
-- Posting frequency vs engagement diagnosis
-- Sentiment and coefficient plots (see `/visuals`)
+**Interpretation:**  
+Harrods maintains strong brand affinity but underperforms in conversation-driven engagement.
+
+---
+
+### Content Strategy Gap
+- Harrods posting frequency declined **10.4%** during the analysis period.
+- Engagement decline coincided with reduced posting and limited interactive formats.
+- Selfridges posted more frequently and adopted trend-led formats, particularly on TikTok, where it held **~166K followers vs Harrods’ ~19.9K**.
+
+---
+
+### Sentiment Analysis
+- Trustpilot sentiment distribution showed:
+  - **Majority positive sentiment**, aligning with Harrods’ **4-star average rating**
+  - Smaller but persistent negative cluster
+- **Topic modelling revealed:**
+  - Negative sentiment strongly associated with **pricing, service delays, and payment issues**
+  - Positive sentiment driven by **staff quality, ease of shopping, and overall experience**
+- Complaint-related topics showed **declining prevalence over time**, indicating partial resolution but not elimination.
 
 ---
 
 ## Business Implications
 
-- Engagement performance should be evaluated on **efficiency (engagement per post)** rather than reach alone.
-- Content strategy should prioritise consistency and platform-specific optimisation.
-- Customer experience pain points identified through sentiment analysis should inform service and communication priorities.
-- Competitive benchmarking enables realistic performance targets rather than vanity metrics.
+- **Engagement strategy:**  
+  Harrods should prioritise **conversation-led formats** (polls, Q&A, UGC prompts) to convert passive admiration into interaction.
+  
+- **Channel strategy:**  
+  TikTok represents a clear competitive gap; increasing posting cadence and UGC activation is critical to reach younger luxury consumers.
 
-The insights directly support customer analytics, brand strategy, and marketing optimisation decisions.
+- **Customer experience:**  
+  Sentiment and topic analysis highlight **pricing transparency and service efficiency** as the highest-risk perception drivers.
 
----
-
-## How to Navigate This Repository
-
-- **README.md** → Business context, insights, and recommendations  
-- **visuals/** → Key charts used for diagnosis and decision-making  
-- **code/** → R scripts for sentiment analysis and trend modelling  
-- **data/** → Cleaned, analysis-ready datasets  
+- **Measurement maturity:**  
+  Combining KPI diagnostics with sentiment analytics provides a fuller view than engagement metrics alone.
 
 ---
 
 ## Tools & Techniques
+- **R:** sentimentr, ggplot2, stm
+- **Analytics methods:** KPI benchmarking, sentiment analysis, topic modelling
+- **Text analytics:** tokenisation, polarity scoring, topic prevalence
+- **Business frameworks:** SWOT-informed recommendations, KPI diagnostics
 
-- **R**: data cleaning, sentiment analysis, regression and trend analysis  
-- **Text analytics**: sentiment scoring, theme identification  
-- **Customer analytics**: KPI benchmarking, competitor analysis  
-- **Visual analytics**: engagement diagnostics and insight communication
+---
+
+## How to Navigate
+- `README.md` → business context, insights, decisions
+- `code/` → sentiment analysis & topic modelling scripts (R)
+- `visuals/` → engagement diagnostics, sentiment distributions, topic outputs
+- `data/` → cleaned Trustpilot review dataset
